@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cadastro de Imóveis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            background-color: #ffffff;
+            color: #0c23a0fd;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .container-maior {
+            display: flex;
+            justify-content: center;
+        }
+
+        .container1 {
+            position: relative;
+            float: left;
+            width: 600px;
+            margin: 20 auto;
+            background-color: #f1f0f0;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 0px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .carousel {
+            width: 100%;
+            height: 750px;
+            overflow: hidden;
+        }
+
+        .carousel img {
+            width: 100%;
+            max-width: 600px;
+            height: 750px;
+            object-fit: cover;
+            border-radius: 10px
+        }
+
+
+
+
+        .container2 {
+            position: relative;
+            float: right;
+            max-width: 600px;
+            margin: 20 auto;
+            background-image: url("img/img1.png");
+            background-repeat: no-repeat;
+            background-size: 800px 700px;
+            padding: 20px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #020631b4;
+            margin-bottom: 1px;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #4b48c2ce;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 50px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 2px solid #222fbbb4;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            background-color: #222fbbb4;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5e5ce7b4;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        button.alterarBtn,
+        button.excluirBtn {
+            margin-left: 10px;
+        }
+
+        #mensagemSucesso {
+            color: rgb(7, 121, 7);
+            margin-top: 10px;
+            display: none;
+        }
+
+        #listaImoveis {
+            display: none;
+        }
+
+        #ocultarCadastrosBtn {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 200px) {
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <di class="container-maior">
+        <div class="container1">
+            <div class="carousel">
+                <img src="img/img2.png" alt="Imagem 2">
+                <img src="img/img3.png" alt="Imagem 3">
+            </div>
+        </div>
+        </div>
+        <div class="container2">
+            <h1>Imobiliária Domus</h1>
+            <h3>Cadastro de Imóveis</h3>
+
+            <form>
+                <label for="id">ID</label>
+                <input type="text" id="id" required aria-describedby="passwordHelpBlock">
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                    Sua ID deve ter entre 4 e 10 caracteres, os quais devem ser letras maiusculas e números, sem
+                    espaços, caracteres especiais ou emojis.
+                </small>
+                <br>
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" required>
+                    <option value="">Selecione</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Kitnet">Kitnet</option>
+                    <option value="Studio">Studio</option>
+                    <option value="Terreno Vazio">Terreno Vazio</option>
+                </select><br><br>
+                <br>
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" required>
+                <br>
+                <label for="dataConstrucao">Data de Construção:</label>
+                <input type="date" id="dataConstrucao" required>
+                <br>
+                <label for="preco">Preço:</label>
+                <input type="number" id="preco" required>
+                <br>
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" required></textarea>
+                <br>
+                <button type="button" id="enviarBtn">Enviar</button>
+            </form>
+
+            <button type="button" id="exibirCadastrosBtn">Exibir Cadastros</button>
+            <button type="button" id="ocultarCadastrosBtn">Ocultar Cadastros</button>
+
+            <ul id="listaImoveis"></ul>
+
+            <p id="mensagemSucesso"></p>
+    </di>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function getImoveis() {
+            const imoveis = localStorage.getItem('imoveis');
+            if (imoveis) {
+                return JSON.parse(imoveis);
+            } else {
+                return [];
+            }
+        }
+
+        function saveImoveis(imoveis) {
+            localStorage.setItem('imoveis', JSON.stringify(imoveis));
+        }
+
+      
+        function adicionarImovel(imovel) {
+            const imoveis = getImoveis();
+            imoveis.push(imovel);
+            saveImoveis(imoveis);
+        }
+
+       
+        function atualizarImovel(index, imovel) {
+            const imoveis = getImoveis();
+            imoveis[index] = imovel;
+            saveImoveis(imoveis);
+        }
+
+      
+        function excluirImovel(index) {
+            const imoveis = getImoveis();
+            imoveis.splice(index, 1);
+            saveImoveis(imoveis);
+        }
+
+        
+        function exibirCadastros() {
+            const listaImoveis = document.getElementById('listaImoveis');
+            listaImoveis.innerHTML = '';
+
+            const imoveis = getImoveis();
+            imoveis.forEach(function (imovel, index) {
+                const item = document.createElement('li');
+                item.innerHTML = `
+          <strong>ID:</strong> ${imovel.id}<br>
+          <strong>Tipo:</strong> ${imovel.tipo}<br>
+          <strong>Endereço:</strong> ${imovel.endereco}<br>
+          <strong>Data de Construção:</strong> ${imovel.dataConstrucao}<br>
+          <strong>Preço:</strong> R$ ${imovel.preco}<br>
+          <strong>Descrição:</strong> ${imovel.descricao}<br>
+          <button type="button" onclick="alterarImovel(${index})">Alterar</button>
+          <button type="button" onclick="excluirImovel(${index})">Excluir</button>
+        `;
+
+                listaImoveis.appendChild(item);
+            });
+
+            listaImoveis.style.display = 'block';
+            document.getElementById('ocultarCadastrosBtn').style.display = 'inline-block';
+            document.getElementById('exibirCadastrosBtn').style.display = 'none';
+        }
+
+        
+        function ocultarCadastros() {
+            document.getElementById('listaImoveis').style.display = 'none';
+            document.getElementById('ocultarCadastrosBtn').style.display = 'none';
+            document.getElementById('exibirCadastrosBtn').style.display = 'inline-block';
+        }
+
+        
+        function limparFormulario() {
+            document.getElementById('id').value = '';
+            document.getElementById('tipo').value = '';
+            document.getElementById('endereco').value = '';
+            document.getElementById('dataConstrucao').value = '';
+            document.getElementById('preco').value = '';
+            document.getElementById('descricao').value = '';
+        }
+
+        
+        function exibirMensagemSucesso(mensagem) {
+            const mensagemSucesso = document.getElementById('mensagemSucesso');
+            mensagemSucesso.innerHTML = mensagem;
+            mensagemSucesso.style.display = 'block';
+
+            
+            setTimeout(function () {
+                mensagemSucesso.innerHTML = '';
+                mensagemSucesso.style.display = 'none';
+            }, 3000);
+        }
+
+        
+        function enviarFormulario() {
+            const id = document.getElementById('id').value;
+            const tipo = document.getElementById('tipo').value;
+            const endereco = document.getElementById('endereco').value;
+            const dataConstrucao = document.getElementById('dataConstrucao').value;
+            const preco = document.getElementById('preco').value;
+            const descricao = document.getElementById('descricao').value;
+
+            const imovel = {
+                id: id,
+                tipo: tipo,
+                endereco: endereco,
+                dataConstrucao: dataConstrucao,
+                preco: preco,
+                descricao: descricao
+            };
+
+            adicionarImovel(imovel);
+            limparFormulario();
+            exibirMensagemSucesso('Cadastro realizado com sucesso!');
+        }
+
+        
+        function alterarImovel(index) {
+            const imoveis = getImoveis();
+            const imovel = imoveis[index];
+
+            document.getElementById('id').value = imovel.id;
+            document.getElementById('tipo').value = imovel.tipo;
+            document.getElementById('endereco').value = imovel.endereco;
+            document.getElementById('dataConstrucao').value = imovel.dataConstrucao;
+            document.getElementById('preco').value = imovel.preco;
+            document.getElementById('descricao').value = imovel.descricao;
+
+            
+            excluirImovel(index);
+
+            
+            setTimeout(function () {
+                exibirMensagemSucesso('Imóvel alterado. Preencha os dados e envie novamente.');
+
+            });
+        }
+
+       
+        document.getElementById('enviarBtn').addEventListener('click', enviarFormulario);
+
+        
+        document.getElementById('exibirCadastrosBtn').addEventListener('click', exibirCadastros);
+
+       
+        document.getElementById('ocultarCadastrosBtn').addEventListener('click', ocultarCadastros);
+
+
+        $(document).ready(function () {
+            $('.carousel').slick({
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: false,
+                dots: false,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                fade: true,
+                cssEase: 'linear',
+                speed: 1000,
+                easing: 'linear'
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+</body>
+
+</html>
